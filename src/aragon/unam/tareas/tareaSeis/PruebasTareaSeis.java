@@ -1,4 +1,4 @@
-package aragon.unam.tareas.tareaCinco;
+package aragon.unam.tareas.tareaSeis;
 
 import java.util.Iterator;
 
