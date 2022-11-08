@@ -1,12 +1,16 @@
 package aragon.unam.estructuras;
 
-public class ListaLigadaADT<T> {
+import java.util.Iterator;
+
+public class ListaLigadaADT<T> implements Iterable<T>{
 
 	private Nodo<T> head;
+	private Nodo<T> aux;
 	private int tamanio;
 
 	public ListaLigadaADT() {
 		this.head = null;
+		this.aux = null;
 		this.tamanio = 0;
 	}
 
@@ -155,4 +159,22 @@ public class ListaLigadaADT<T> {
 		System.out.println("");
 	}
 
+	@Override
+	public Iterator<T> iterator() {
+		aux = head;
+		return new Iterator() {
+			@Override
+			public boolean hasNext() {
+				return aux != null;	
+			}
+
+			@Override
+			public T next() {
+				T next = aux.getDato();
+				aux = aux.getSiguiente();
+				return next;
+			}
+			
+		};
+		}
 }
