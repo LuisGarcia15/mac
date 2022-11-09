@@ -30,6 +30,7 @@ public class Laberinto{
 						auxiliar = texto.split(",");
 						laberinto = new Array2DADT<>(Integer.parseInt(auxiliar[0]), 
 								Integer.parseInt(auxiliar[1]));
+						this.pila.push(auxiliar[0] + "," + auxiliar[1]);
 						contador++;
 						break;
 					case 2:
@@ -73,6 +74,18 @@ public class Laberinto{
 		}
 		}
 	
+	public Array2DADT<String> getLaberinto() {
+		return laberinto;
+	}
+
+	public StackADT<String> getPila() {
+		return pila;
+	}
+
+	public ArrayADT<Integer> getCoordenadas() {
+		return coordenadas;
+	}
+
 	public  void evaluarReglas(int filas, int columnas) {
 		int fila = filas, columna = columnas, contador = 1;
 		String casilla;
@@ -82,14 +95,8 @@ public class Laberinto{
 			if(columna >= 0 && columna <= this.laberinto.getColumnas() &&
 					fila >= 0 && fila <= this.laberinto.getFilas()) {
 				casilla = this.laberinto.getElemento(fila, columna);
-				switch(casilla) {
-					case "F":
-						this.isMeta(fila, columna,filas,columnas);
-						break;
-					case " ":
-						break;
-					case "X":
-						break;
+				if(casilla.equals(" ")) {
+					this.avanzar(filas, columnas, fila, columna);
 				}
 			}
 			contador++;
