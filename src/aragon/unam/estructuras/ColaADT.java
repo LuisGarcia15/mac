@@ -19,6 +19,7 @@ public class ColaADT <T>{
 	
 	public void enqueue(T elemento) {
 		this.cola.agregarAlFinal(elemento);
+		this.tamanio++;
 	}
 	
 	public T dequeue() {
@@ -27,6 +28,7 @@ public class ColaADT <T>{
 			for (T t : cola) {
 				dato = t;
 				this.cola.eliminarElPrimero();
+				this.tamanio--;
 				break;
 			}
 		}
